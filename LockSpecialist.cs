@@ -7,6 +7,7 @@ namespace Heist
         public string name { get; set; }
         public int skillLevel { get; set; }
         public int percentageCut { get; set; }
+        public string speciality {get; set; } = "Lock specialist";
 
         public void PerformSkill(Bank bank)
         {
