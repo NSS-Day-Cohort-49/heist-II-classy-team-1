@@ -4,16 +4,16 @@ namespace Heist
 {
     public class Bank
     {
-        public string Name { get; set; }
-        public int CashOnHand { get; set; }
-        public int AlarmScore { get; set; }
-        public int VaultScore { get; set; }
-        public int SecurityGuardScore { get; set; }
+        public string name { get; set; }
+        public int cashOnHand { get; set; }
+        public int alarmScore { get; set; }
+        public int vaultScore { get; set; }
+        public int securityGuardScore { get; set; }
         public bool isSecure
         {
             get
             {
-                if (AlarmScore <=0 && VaultScore <=0 && SecurityGuardScore <=0 )
+                if (alarmScore <=0 && vaultScore <=0 && securityGuardScore <=0 )
                 {
                     return false;
                 }
