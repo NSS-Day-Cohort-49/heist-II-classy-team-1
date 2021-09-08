@@ -7,20 +7,14 @@ namespace Heist
     {
         static void Main(string[] args)
         // initialize bank obj
-        {   
-            Bank chase = new Bank(){
+        {
+            Bank chase = new Bank()
+            {
                 alarmScore = new Random().Next(101),
                 vaultScore = new Random().Next(101),
                 securityGuardScore = new Random().Next(101),
                 cashOnHand = new Random().Next(50000, 1000001)
             };
-
-
-
-
-
-
-
 
             Bank.runReconReport(chase.alarmScore, chase.vaultScore, chase.securityGuardScore);
             // recon report
@@ -157,19 +151,20 @@ namespace Heist
                     }
 
                     // Prompt user to add new member or not:
-                    Console.WriteLine();
-                    Console.Write("Would you like to add a new member to the crew? (Y/N): ");
-                    Console.WriteLine();
-                    userInput = Console.ReadLine().ToLower();
+                    // Console.WriteLine();
+                    // Console.Write("Would you like to add a new member to the crew? (Y/N): ");
+                    // Console.WriteLine();
+                    // userInput = Console.ReadLine().ToLower();
 
-                    if (userInput == "y")
-                    {
-                        addNewMember = true;
-                    }
-                    else
-                    {
-                        addNewMember = false;
-                    }
+                    // if (userInput == "y")
+                    // {
+                    //     addNewMember = true;
+                    // }
+                    // else
+                    // {
+                    //     addNewMember = false;
+                    // }
+
                     // reset properties  to initial values:
                     name = "";
                     skillLevel = 0;
@@ -181,7 +176,20 @@ namespace Heist
             // will create new member so long as variable is true:
             while (addNewMember)
             {
-                createMember();
+                Console.WriteLine();
+                Console.Write("Would you like to add a new member to the crew? (Y/N): ");
+                Console.WriteLine();
+                userInput = Console.ReadLine().ToLower();
+
+                if (userInput == "y")
+                {
+                    createMember();
+                }
+                else
+                {
+                    break;
+                }
+
             }
 
             // Printing updated count and rolodex info:
@@ -193,9 +201,33 @@ namespace Heist
 
             foreach (IRobber robber in rolodex)
             {
-                Console.WriteLine($"{counter} {robber.name}'s skill level is {robber.skillLevel} with {robber.percentageCut}% of the cut. He is a {robber.speciality}.");
+                Console.WriteLine($"{counter} {robber.name}'s skill level is {robber.skillLevel} with {robber.percentageCut}% of the cut. Speciality is {robber.speciality}.");
                 counter++;
             }
+
+            List<IRobber> crew = new List<IRobber>() { };
+
+            // Prompting user to add a member to crew:
+            while (true)
+            {
+                Console.Write("Please enter the number of the operative to add to your crew: ");
+                int input = int.Parse(Console.ReadLine());
+                crew.Add(rolodex[input]);
+
+                Console.Write("Would you like to add another member? (Y/N): ");
+                string answer = Console.ReadLine().ToLower();
+
+                if (answer != "y")
+                {
+                    break;
+                }
+            }
+
+            foreach (IRobber robber in crew)
+            {
+                Console.WriteLine($"{robber.name}'s skill level is {robber.skillLevel} with {robber.percentageCut}% of the cut. Speciality {robber.speciality}.");
+            }
+
         }
     }
 }
