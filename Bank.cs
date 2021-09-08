@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Heist
 {
@@ -23,5 +25,33 @@ namespace Heist
                 }
             }
         }
+        public static void runReconReport(int alarmScore, int vaultScore, int securityGuardScore) {
+            var securityScore = new List<int> {alarmScore, vaultScore, securityGuardScore};
+
+            if (securityScore.Max() == alarmScore) 
+            {
+            Console.WriteLine($"Most secure: Alarm");
+            }
+            else if (securityScore.Max() == vaultScore) 
+            {
+            Console.WriteLine($"Most secure: Vault");
+            }
+            else
+            {
+            Console.WriteLine($"Most secure: Security Guard");
+            }
+            if (securityScore.Min() == alarmScore) 
+            {
+            Console.WriteLine($"Least secure: Alarm");
+            }
+            else if (securityScore.Min() == vaultScore) 
+            {
+            Console.WriteLine($"Least secure: Vault");
+            }
+            else
+            {
+            Console.WriteLine($"Least secure: Security Guard");
+            }
     }
+}
 }
