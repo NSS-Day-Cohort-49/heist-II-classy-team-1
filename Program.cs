@@ -14,8 +14,16 @@ namespace Heist
                 securityGuardScore = new Random().Next(101),
                 cashOnHand = new Random().Next(50000, 1000001)
             };
+
+
+
+
+
+
+
+
+            Bank.runReconReport(chase.alarmScore, chase.vaultScore, chase.securityGuardScore);
             // recon report
-        
 
             // creating rolodex list of initial team of robbers:
             List<IRobber> rolodex = new List<IRobber>()
@@ -66,6 +74,8 @@ namespace Heist
             int percentageCut = 0;
             int specialty = 0;
             bool addNewMember = true;
+
+            int counter = 0;
 
             // method that prompts user for input to create new member:
             void createMember()
@@ -179,9 +189,12 @@ namespace Heist
             Console.WriteLine();
             Console.WriteLine("Robber Team Info:");
             Console.WriteLine();
+
+
             foreach (IRobber robber in rolodex)
             {
-                Console.WriteLine($"{robber.name}'s skill level is {robber.skillLevel} with {robber.percentageCut}% of the cut.");
+                Console.WriteLine($"{counter} {robber.name}'s skill level is {robber.skillLevel} with {robber.percentageCut}% of the cut. He is a {robber.speciality}.");
+                counter++;
             }
         }
     }

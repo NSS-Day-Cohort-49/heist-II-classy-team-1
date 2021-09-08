@@ -7,7 +7,11 @@ namespace Heist
         public string name { get; set; }
         public int skillLevel { get; set; }
         public int percentageCut { get; set; }
+        public string speciality {get ; set; } = "Hacker";
 
+
+
+        
         public void PerformSkill(Bank bank)
         {
             bank.alarmScore -= skillLevel;
