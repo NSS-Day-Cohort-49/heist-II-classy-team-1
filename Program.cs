@@ -6,7 +6,17 @@ namespace Heist
     class Program
     {
         static void Main(string[] args)
-        {
+        // initialize bank obj
+        {   
+            Bank chase = new Bank(){
+                alarmScore = new Random().Next(101),
+                vaultScore = new Random().Next(101),
+                securityGuardScore = new Random().Next(101),
+                cashOnHand = new Random().Next(50000, 1000001)
+            };
+            // recon report
+        
+
             // creating rolodex list of initial team of robbers:
             List<IRobber> rolodex = new List<IRobber>()
             {
